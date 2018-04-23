@@ -1,0 +1,15 @@
+@mixin main-footer(){
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px 0 5px;
+  margin: 0;
+  > a {
+    outline: none;
+    color: $second-color;
+    text-decoration: none;
+    &:hover {
+      color: $second-color;
+      text-decoration: underline;
+    }
+  }
+}

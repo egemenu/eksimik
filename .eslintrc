@@ -1,0 +1,14 @@
+{
+	"extends": [ "recommended/esnext", "recommended/esnext/style-guide"],
+	"rules": {
+		"no-console": "off",
+		"no-invalid-this": "off",
+		"prefer-const": "off"
+	},
+	"env": {
+    "browser": true
+  },
+	"parserOptions": {
+		"ecmaVersion": 6
+	}
+}

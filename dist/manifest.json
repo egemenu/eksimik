@@ -1,0 +1,19 @@
+{
+  "name": "ekşiGündem",
+  "short_name": "eksiGundem",
+  "description":
+    "Ekşi Sözlük gündemini anlık olarak takip edebilmeye yarar. O an gündemde olan başlıkları ve günün ilk girilerini gösterir.",
+  "version": "1.0.1",
+  "manifest_version": 2,
+  "permissions": ["https://eksisozluk.com/"],
+  "icons": {
+    "16": "/icon16.png",
+    "48": "/icon48.png",
+    "128": "/icon128.png"
+  },
+  "browser_action": {
+    "default_title": "ekşiGündem",
+    "default_icon": "/icon16.png",
+    "default_popup": "index.html"
+  }
+}

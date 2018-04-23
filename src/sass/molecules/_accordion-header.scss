@@ -1,0 +1,15 @@
+@mixin accordion-header(){
+  @include box();
+  height: $header-box-height;
+  line-height: $header-box-height;
+  background: $background-color;
+  z-index: 100;
+  box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px -2px rgba(0, 0, 0, 0.12),
+    0 2px 4px -4px rgba(0, 0, 0, 0.24);
+  > label {
+    margin: 0;
+    @include box-holder();
+    @include text-main-title();
+    padding-left: 25px;
+  }
+}

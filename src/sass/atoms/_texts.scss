@@ -1,0 +1,42 @@
+@mixin text-styler($font-size: 10px,  $line-height: 1, $color: $text-color, $font-weight: normal){
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $color;
+  font-weight: $font-weight
+}
+
+@mixin text-main-title(){
+  @include text-styler(18px, $box-height, $second-color)
+}
+
+@mixin text-counter(){
+  @include text-styler(12px, $box-height)
+}
+
+@mixin text-box-header(){
+  @include text-styler(13px, $box-height)
+}
+
+@mixin text-box-content(){
+  @include text-styler(13px, 16px)
+}
+
+@mixin text-box-content-link(){
+  @include text-styler(13px, 16px, $second-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin text-box-footer-link(){
+  @include text-styler(11px, 1, $second-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }  
+}
+
+@mixin text-date(){
+  @include text-styler(9px, 1, $fourth-color);
+}

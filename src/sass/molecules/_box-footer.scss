@@ -1,0 +1,15 @@
+@mixin box-footer() {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  a {
+    @include text-box-footer-link();
+  }
+  span {
+    a {
+      &:first-of-type {
+        @include text-date();
+      }
+    }
+  }
+}

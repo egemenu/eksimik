@@ -1,0 +1,51 @@
+@mixin accordion(){
+  margin: auto;
+  width: 400px;
+  > header {
+   @include accordion-header();
+  }
+  > input {
+    display: none;
+    &:checked {
+      + section {
+        height: auto;
+        margin: 16px 0;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.16),
+          0 6px 12px rgba(0, 0, 0, 0.32);
+        > label {
+          &:first-of-type {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+            &:before {
+              transform: rotate(90deg);
+            }
+          }
+          &:last-of-type {
+            display: inline-block;
+          }
+        }
+        > article {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  > section {
+    @include box();
+    > label {
+      &:first-of-type {
+        @include box-holder();
+        padding-left: 25px;
+        width: calc(100% - $box-height);
+        &:before {
+          @include box-holder-icon();
+        }
+      }
+      &:last-of-type {
+        @include box-close();
+      }
+    }
+    > article {
+      @include box-content();
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@mixin box-content() {
+  width: calc(100% - 40px);
+  padding: 10px 20px;
+  @include text-box-content();
+  margin: 0;
+  display: none;
+  a {
+    @include text-box-content-link();
+  }
+  footer {
+    @include box-footer();
+  }
+}
+

@@ -1,0 +1,15 @@
+
+@mixin box-holder() {
+  width: calc(100% - 40px);
+  height: $box-height;
+  padding: 0 10px;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  @include text-box-header();
+  > small {
+    position: absolute;
+    right: 15px;
+    @include text-counter();
+  }
+}
