@@ -1,13 +1,10 @@
-
 body {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 10px;
-  display: flex;
   background: $background-color;
   color: $text-color;
   font-family: $font-family;
+  @include custom-scrollbar();
   > * {
     font-family: $font-family;
   }

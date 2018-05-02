@@ -36,14 +36,19 @@
     transform: scale(1); } }
 
 body {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 10px;
-  display: flex;
   background: #eeeeed;
   color: #333334;
   font-family: "Source Sans Pro", sans-serif; }
+  body::-webkit-scrollbar {
+    width: 7px; }
+  body::-webkit-scrollbar-track {
+    background: #eeeeed;
+    border-radius: 5px; }
+  body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #666665; }
   body > * {
     font-family: "Source Sans Pro", sans-serif; }
   body > .container > header {
