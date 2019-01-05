@@ -10,15 +10,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "eslint-config-recommended": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^4.0.2",
     "gulp-rollup": "^2.16.2",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "natives": "^1.1.6"
   }
 }
