@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "google"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules":{
+    "indent": [2, "tab"],
+    "no-tabs": 0,
+    "max-len": 0
+  }
+}

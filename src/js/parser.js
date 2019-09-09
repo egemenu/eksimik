@@ -1,46 +1,66 @@
-import Config from './config'
+import Config from './config';
 
-export default class Parser {
-	constructor (html, query) {
-		this.html = html
-		this.query = query
+/** Ayıklayıcı */
+class Parser {
+	/**
+	 * Html elemanı ve sorguyla işlem yapar
+	 * @param {HTMLElement} html Gelen Html elemanı
+	 * @param {string} query Gelen sorgu
+	 */
+	constructor(html, query) {
+		this.html = html;
+		this.query = query;
 	}
-	getElementList () {
-		let obj = document.createElement('div')
-		obj.innerHTML = this.html
-		return obj.querySelectorAll(this.query)
+	/**
+	 * Verilen HTML elemanından sorgulanan elemanları ayıklar ve gönderir
+	 * @return {obj} Ayıklanmış nodeList
+	 */
+	getElementList() {
+		const holder = document.createElement('div');
+		holder.innerHTML = this.html;
+		return holder.querySelectorAll(this.query);
 	}
-	getElement () {
-		let obj = document.createElement('div')
-		obj.innerHTML = this.html
-		return obj.querySelector(this.query)
-	}
-	parseEntry () {
-		let obj = document.createElement('div')
-		obj.innerHTML = this.html
-		let holder = obj.querySelector(this.query)
-		let content = holder.querySelector(Config.handler.content)
-		let childArr = [ ...content.children ]
-		for (let i in childArr)
-			if (childArr[i].nodeName === 'A' && [ ...childArr[i].classList ].includes('b')) {
-				childArr[i].className += '  sign'
-				childArr[i].target = '_blank'
-				childArr[i].href = Config.url.main + '/' + childArr[i].search
+	/**
+	 * Girdiyi ayıklar.
+	 * @return {object} Girdi bilgileri.
+	 */
+	parseEntry() {
+		const holderElem = document.createElement('div');
+		holderElem.innerHTML = this.html;
+		const mainElem = holderElem.querySelector(this.query);
+		const content = mainElem.querySelector(Config.handler.content);
+		const childArr = [...content.children];
+		for (const i in childArr) {
+			if (childArr[i].nodeName === 'A' && [...childArr[i].classList].includes('b')) {
+				childArr[i].className += '  sign';
+				childArr[i].target = '_blank';
+				childArr[i].href = Config.url.main + '/' + childArr[i].search;
 			}
-		let author = holder.querySelector(Config.handler.author)
-		let date = holder.querySelector(Config.handler.date)
+		}
+		const author = mainElem.querySelector(Config.handler.author);
+		const date = mainElem.querySelector(Config.handler.date);
 		return {
 			content: content.innerHTML,
 			url: date.getAttribute('href'),
 			date: date.innerHTML,
 			author: author.innerHTML,
 			author_url: author.getAttribute('href'),
-		}
+		};
 	}
-	remover () {
-		let obj = this.html
-		let child = obj.querySelector(this.query)
-		obj.removeChild(child)
-		return obj
+	/**
+	 * Verilen HTML elemanından ilgili query'i yakalarsa siler
+	 * @return {HTMLElement} Silinen eleman.
+	 */
+	remover() {
+		const mainElem = this.html;
+		const childElem = mainElem.querySelector(this.query);
+		try {
+			mainElem.removeChild(childElem);
+		} catch (err) {
+			console.error(err);
+		}
+		return mainElem;
 	}
 }
+
+export default Parser;

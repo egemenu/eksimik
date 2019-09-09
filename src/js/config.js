@@ -5,11 +5,11 @@ const config = {
 	},
 	handler: {
 		first_entry: '#entry-item-list > li:first-of-type',
-		entry_list: 'ul.topic-list.partial.mobile>li',
+		entry_list: 'ul.topic-list.partial.mobile > li',
 		content: '.content',
 		author: '.entry-author',
 		date: '.entry-date',
 	},
-}
+};
 
-export default config
+export default config;

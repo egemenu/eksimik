@@ -40,3 +40,9 @@
 @mixin text-date(){
   @include text-styler(9px, 1, $fourth-color);
 }
+
+@mixin text-connection-error() {
+  @include text-styler(12px, 1, $fourth-color);
+  text-align: center;
+  margin: 30px auto;
+}
