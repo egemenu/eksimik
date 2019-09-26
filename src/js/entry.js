@@ -1,66 +1,124 @@
-import Config from './config';
-import Parser from './parser';
+import * as helpers from './helpers';
 
-/** Girdi oluşturucu*/
+/** Entry class */
 class Entry {
 	/**
-	 * Girdi ve index ile Html elemanı oluşturur
-	 * @param {number} index CSS accordion'da kullanılacak girdi index'i
-	 * @param {HTMLElement} elem Girdi elemanı
+	 * @param {number} index Required for pure CSS accordion & Entry numbers
+	 * @param {HTMLElement} element Raw HTML
+	 * @param {string} url Required for Entry type
 	 */
-	constructor(index, elem) {
-		this.main_url = Config.url.main;
-		this.id = index;
-		this.elem = elem;
-		this.url = Config.url.main + this.elem.firstElementChild.getAttribute('href');
-		this.title = this.elem.firstElementChild.innerHTML.split('<small')[0];
-		this.count = this.elem.firstElementChild.firstElementChild.innerText;
-		this.loader = `<div class="loader" id="loader">
-    								<span></span>
-    								<span></span>
-    								<span></span>
-									</div>`;
+	constructor(index, element, url) {
+		this._id = index;
+		this._url = url;
+		this._element = element;
 	}
 	/**
-	 * Girdi başlıklarını oluştur
-	 * @return {HTMLElement} Girdi başlığı gösteren Html elemanı
+	 * @return {string} Entry type detection
 	 */
-	makeEntryTitle() {
-		return `<input type="radio" name="accordion" id="acc-${ this.id }" data-url="${ this.url }"/>
-						<section>
-							<label for="acc-${ this.id }">${ this.title }<small>${ this.count }</small></label>
-							<label for="acc-close"></label>	
-								<article id="article-${ this.id }">${ this.loader }</article>
-						</section>`;
+	get type() {
+		return this._url.includes('debe') ? 'debe' : 'gundem';
 	}
 	/**
-	 * Tıklanıldığında yapılacakları belirten eventListener ekle
+	 * @return {string} Entry url
 	 */
-	eventListenerAdder() {
-		const elem = document.getElementById('acc-' + this.id);
-		elem.addEventListener( 'click', () => this.createEntry(), false);
+	get url() {
+		return helpers.urls.main + this._element.firstElementChild.getAttribute('href');
 	}
 	/**
-	 * Daha önce oluşturulmadıysa girdi elemanını oluştur
+	 * @return {string} Entry title
+	 */
+	get title() {
+		let title = '';
+		if (this.type === 'debe') {
+			title = this._element.firstElementChild.firstElementChild.innerText;
+		} else {
+			title = this._element.firstElementChild.innerHTML.split('<small')[0];
+		}
+		return title;
+	}
+	/**
+	 * @return {string} Entry's info/counter
+	 */
+	get statusCounter() {
+		let counter = '';
+		if (this.type === 'debe') {
+			counter = `#${parseInt(this._id, 10) + 1}`;
+		} else {
+			counter = this._element.firstElementChild.firstElementChild.innerText;
+		}
+		return counter;
+	}
+	/**
+	 * Required for accordion management
+	 * @return {HTMLElement} Accordion's input element.
+	 */
+	get titleInputElement() {
+		const inputElement = document.createElement('input');
+		inputElement.type = 'radio';
+		inputElement.name = 'accordion';
+		// Don't need it anymore
+		// inputElement.setAttribute('data-url', this.url);
+		inputElement.id = `acc-${ this._id }`;
+		inputElement.className = 'act';
+
+		return inputElement;
+	}
+	/**
+	 * Required for accordion management
+	 * @return {HTMLElement} Readable title in HTML format
+	 */
+	get titleSectionElement() {
+		const sectionElement = document.createElement('section');
+		sectionElement.className = 'act';
+
+		const labelElement = document.createElement('label');
+		labelElement.htmlFor = `acc-${this._id}`;
+
+		const smallElement = document.createElement('small');
+		smallElement.innerText = this.statusCounter;
+
+		labelElement.innerText = this.title;
+		labelElement.appendChild(smallElement);
+
+		const labelCloseElement = document.createElement('label');
+		labelCloseElement.htmlFor = 'acc-close';
+
+		const articleElement = document.createElement('article');
+		articleElement.id = `article-${this._id}`;
+		articleElement.innerHTML += helpers.loader;
+
+		sectionElement.appendChild(labelElement);
+		sectionElement.appendChild(labelCloseElement);
+		sectionElement.appendChild(articleElement);
+
+		// Add one time listener
+		const crateEntryHandler = () => {
+			this.createEntry();
+			sectionElement.removeEventListener( 'click', crateEntryHandler, false);
+		};
+		sectionElement.addEventListener( 'click', crateEntryHandler, false);
+
+		return sectionElement;
+	}
+	/**
+	 * Creates entry and adds to DOM
 	 */
 	createEntry() {
-		const article = document.getElementById('article-' + this.id);
-		if (article.firstElementChild.classList.contains('loader')) {
-			fetch(this.url)
-				.then((res) => res.text())
-				.then((html) => {
-					const entry = new Parser(`${ html }`, Config.handler.first_entry).parseEntry();
-					const article = new Parser(document.querySelector('#article-' + this.id), '#article-' + this.id + ' .loader').remover();
-					article.innerHTML += entry.content;
-					article.innerHTML += `<footer>
-  																<a href="${ this.main_url + entry.url }" target="_blank">başlığa git</a>
-																	<span>
-																		<a href="${ this.main_url + entry.url }" target="_blank">${ entry.date }</a>
-																		<a href="${ this.main_url + entry.author_url }" target="_blank">${ entry.author }</a>
-																	</span>
-																</footer>`;
-				});
-		}
+		const article = document.getElementById('article-' + this._id);
+		fetch(this.url)
+			.then((res) => res.text())
+			.then((html) => {
+				const entry = helpers.firstEntryParser(`${ html }`);
+				helpers.removeLoader(`#article-${this._id}`);
+				article.innerHTML += entry.content;
+				article.innerHTML += `<footer>
+																<a href="${ helpers.urls.main + entry.url }" target="_blank">başlığa git</a>
+																<span>
+																	<a href="${ helpers.urls.main + entry.url }" target="_blank">${ entry.date }</a>
+																	<a href="${ helpers.urls.main + entry.author_url }" target="_blank">${ entry.author }</a>
+																</span>
+															</footer>`;
+			});
 	}
 }
 

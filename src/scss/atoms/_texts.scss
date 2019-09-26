@@ -5,24 +5,33 @@
   font-weight: $font-weight
 }
 
-@mixin text-main-title(){
-  @include text-styler(18px, $box-height, $second-color)
+@mixin text-header-link(){
+  @include text-styler(14px, $box-height, $second-color);
+  text-decoration: none;
+}
+
+@mixin text-header-link-active(){
+  @include text-styler(14px, $box-height, $white, 700);
+  text-decoration: none;
+  background: $fifth-color;
+  border-radius: 5px;
+  padding: 4px 8px;
 }
 
 @mixin text-counter(){
-  @include text-styler(12px, $box-height)
-}
-
-@mixin text-box-header(){
   @include text-styler(13px, $box-height)
 }
 
+@mixin text-box-header(){
+  @include text-styler(14px, $box-height)
+}
+
 @mixin text-box-content(){
-  @include text-styler(13px, 16px)
+  @include text-styler(14px, 17px)
 }
 
 @mixin text-box-content-link(){
-  @include text-styler(13px, 16px, $second-color);
+  @include text-styler(14px, 17px, $second-color);
   text-decoration: none;
   &:hover {
     text-decoration: underline;

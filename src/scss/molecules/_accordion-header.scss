@@ -9,7 +9,39 @@
   > label {
     margin: 0;
     @include box-holder();
-    @include text-main-title();
     padding-left: 25px;
+
+    > ul {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      padding: 0;
+      z-index: 5;
+      li {
+        display: inline-block;
+        margin-right: 10px;
+        @include text-header-link();
+
+        a {
+          @include text-header-link();
+        }
+        
+        &.active {
+          a {
+            @include text-header-link-active();
+          }
+        }
+      }
+      &:last-of-type {
+        left: auto;
+        right: 20px;
+        li {
+          margin-left: 10px;
+          margin-right: 0;
+        }
+      }
+    }
   }
 }

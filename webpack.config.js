@@ -4,10 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
+  watch: true,
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -37,7 +37,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: !devMode,
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html'
@@ -46,8 +48,9 @@ module.exports = {
       filename: "style.css"
     }),
     new CopyPlugin([
-      { from: './src/public', to: '' },
+      { from: 'src/public', to: '' },
     ]),
   ],
-  mode : devMode ? 'development' : 'production'
+  mode : devMode ? 'development' : 'production',
+  watch: devMode
 }
