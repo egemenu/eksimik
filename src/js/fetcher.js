@@ -23,7 +23,7 @@ export default function(url) {
 
 			// Extract entries raw html
 			const entryList = [
-				...rawHtml.querySelectorAll(helpers.queries.entry_list),
+				...rawHtml.querySelectorAll(url.includes('ara?') ? helpers.queries.search_result_list : helpers.queries.entry_list),
 			];
 
 			// Remove loading

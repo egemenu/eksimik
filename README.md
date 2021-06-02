@@ -1,4 +1,4 @@
-# ![test](https://raw.githubusercontent.com/egemenu/eksiGundem/master/src/public/icon48.png)Ekşi Sözlük Gündem & Debe v2.0
+# ![test](https://raw.githubusercontent.com/egemenu/eksiGundem/master/src/public/icon48.png)Ekşimik v3.0
 
 Ekşi Sözlük gündemini anlık olarak takip edebilmeye yarayan Chrome eklentisidir. 
 
@@ -12,6 +12,3 @@ O an gündemde olan başlıkları, ilgili başlığın gündemdeki ilk entrysini
 * [SASS](https://sass-lang.com)
 * [ESLint](https://eslint.org/)
 
-## Not
-
-:warning: :rocket: [Ekşi Sözlük API](https://github.com/eksisozluk/api/issues/1) 

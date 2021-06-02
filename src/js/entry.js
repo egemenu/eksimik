@@ -32,7 +32,7 @@ class Entry {
 		if (this.type === 'debe') {
 			title = this._element.firstElementChild.firstElementChild.innerText;
 		} else {
-			title = this._element.firstElementChild.innerHTML.split('<small')[0];
+			title = this._element.firstElementChild.innerHTML.trim().split('<small')[0];
 		}
 		return title;
 	}

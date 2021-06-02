@@ -1,6 +1,6 @@
 @mixin accordion(){
   margin: auto;
-  width: 400px;
+  width: 450px;
   > header {
    @include accordion-header();
   }
