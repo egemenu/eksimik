@@ -1,8 +1,8 @@
 {
-  "name": "Ekşi Sözlük Gündem",
-  "short_name": "EksiGundem",
+  "name": "Ekşimik",
+  "short_name": "Ekşimik",
   "description":
-    "Ekşi Sözlük gündemini anlık olarak takip edebilmeye yarar. O an gündemde olan başlıkları ve günün ilk girilerini gösterir.",
+    "Ekşi Sözlük gündemini anlık takiplemeye yarar. Gündemde olan başlıklara ve günün ilk girilerine tek tıkla bakar. Tarihi kullanarak oluşturduğu bugünsel ve yarınsal başlıklarıyla habersel bir perspektif katar. Ekşi'ye giriş yaptıysan mesaj ve olay kutularının yeşilini yakar.",
   "version": "2.0.0",
   "manifest_version": 2,
   "permissions": ["https://eksisozluk.com/"],
@@ -12,7 +12,7 @@
     "128": "/icon128.png"
   },
   "browser_action": {
-    "default_title": "Ekşi Sözlük Gündem",
+    "default_title": "Ekşimik",
     "default_icon": "/icon16.png",
     "default_popup": "index.html"
   },
