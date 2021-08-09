@@ -2,8 +2,8 @@
   "name": "Ekşimik",
   "short_name": "Ekşimik",
   "description":
-    "Ekşi Sözlük gündemini anlık takiplemeye yarar. Gündemde olan başlıklara ve günün ilk girilerine tek tıkla bakar. Tarihi kullanarak oluşturduğu bugünsel ve yarınsal başlıklarıyla habersel bir perspektif katar. Ekşi'ye giriş yaptıysan mesaj ve olay kutularının yeşilini yakar.",
-  "version": "3.0.0",
+    "Ekşi Sözlük gündemini anlık takiplemeye yarar.",
+  "version": "3.0.1",
   "manifest_version": 2,
   "permissions": ["https://eksisozluk.com/"],
   "icons": {

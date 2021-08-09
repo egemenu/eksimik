@@ -44,7 +44,9 @@ class Entry {
 		if (this.type === 'debe') {
 			counter = `#${parseInt(this._id, 10) + 1}`;
 		} else {
-			counter = this._element.firstElementChild.firstElementChild.innerText;
+			if (this._element.firstElementChild.childElementCount > 0) {
+				counter = this._element.firstElementChild.firstElementChild.innerText;
+			}
 		}
 		return counter;
 	}
