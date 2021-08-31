@@ -6,8 +6,8 @@ export const urls = {
 	main: 'https://eksisozluk.com',
 	popular: 'https://eksisozluk.com/basliklar/m/populer',
 	debe: 'https://eksisozluk.com/m/debe',
-	bugunsel: date => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
-	yarinsal: date => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`
+	bugunsel: (date) => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
+	yarinsal: (date) => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
 };
 
 /* Queries */
@@ -22,7 +22,7 @@ export const queries = {
 	newMessageClassName: 'eksico-color-green',
 	track: '.tracked a',
 	newTrackClassName: 'new-update',
-	search_result_list: '#content-body > .topic-list > li'
+	search_result_list: '#content-body > .topic-list > li',
 };
 
 /* Dummy header */
