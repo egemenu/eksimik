@@ -1,57 +1,78 @@
-@mixin text-styler($font-size: 10px,  $line-height: 1, $color: $text-color, $font-weight: normal){
+@mixin text-styler($font-size: 10px,  $line-height: 1, $color: $black, $font-weight: normal){
   font-size: $font-size;
   line-height: $line-height;
   color: $color;
   font-weight: $font-weight
 }
 
-@mixin text-header-link(){
-  @include text-styler(14px, $box-height, $second-color);
+@mixin text-header-link($dark: false){
   text-decoration: none;
+  @include text-styler(14px, $box-height, $green);
+  @if ($dark) {
+    color: $smoke;
+  }
 }
 
-@mixin text-header-link-active(){
+@mixin text-header-link-active($dark: false){
   @include text-styler(14px, $box-height, $white, 700);
   text-decoration: none;
-  background: $fifth-color;
+  background: $green-light;
   border-radius: 5px;
   padding: 4px 8px;
+  @if ($dark) {
+    color: $white;
+  }
 }
 
-@mixin text-counter(){
-  @include text-styler(13px, $box-height)
+@mixin text-counter($dark: false){
+  @include text-styler(13px, $box-height);
+  @if $dark {
+    color: $smoke;
+  }
 }
 
-@mixin text-box-header(){
-  @include text-styler(14px, $box-height)
+@mixin text-box-header($dark: false){
+  @include text-styler(14px, $box-height);
+  @if $dark {
+    color: $smoke;
+  }  
 }
 
-@mixin text-box-content(){
-  @include text-styler(14px, 17px)
+@mixin text-box-content($dark: false){
+  @include text-styler(14px, 17px);
+  @if $dark {
+    color: $smoke;
+  }
 }
 
-@mixin text-box-content-link(){
-  @include text-styler(14px, 17px, $second-color);
+@mixin text-box-content-link($dark: false){
+  @include text-styler(14px, 17px, $green);
   text-decoration: none;
+  @if $dark {
+    color: $green-dark;
+  }
   &:hover {
     text-decoration: underline;
   }
 }
 
-@mixin text-box-footer-link(){
-  @include text-styler(11px, 1, $second-color);
+@mixin text-box-footer-link($dark: false){
+  @include text-styler(11px, 1, $green);
   text-decoration: none;
+  @if $dark {
+    color: $green-dark;
+  }
   &:hover {
     text-decoration: underline;
   }  
 }
 
-@mixin text-date(){
-  @include text-styler(9px, 1, $fourth-color);
+@mixin text-date($dark: false){
+  @include text-styler(9px, 1, $grey);
 }
 
-@mixin text-connection-error() {
-  @include text-styler(12px, 1, $fourth-color);
+@mixin text-connection-error($dark: false) {
+  @include text-styler(12px, 1, $grey);
   text-align: center;
   margin: 30px auto;
 }

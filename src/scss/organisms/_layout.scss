@@ -1,22 +1,32 @@
 body {
   margin: 0;
   padding: 10px;
-  background: $background-color;
-  color: $text-color;
-  font-family: $font-family;
+  background: $bg-light;
+  color: $black;
+  font-family: "Source Sans Pro", sans-serif;;
   @include custom-scrollbar();
-  > * {
-    font-family: $font-family;
-  }
-  > .container {
-    > header {
+  & > .container {
+    & > header {
       @include main-header();
     }
-    > main {
+    & > main {
       @include accordion();
     }
-    > footer {
+    & > footer {
       @include main-footer();
+    }
+  }
+
+  &.dark {
+    background: $bg-dark;
+    color: $smoke;
+    & > .container {
+      & > main {
+        @include accordion(true);
+      }
+      & > footer {
+        @include main-footer(true);
+      }
     }
   }
 }

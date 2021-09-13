@@ -1,6 +1,9 @@
-@mixin box() {
+@mixin box($dark: false) {
   position: relative;
-  background: $background-color;
+  background: $bg-light;
+  @if ($dark) {
+    background: $bg-dark;
+  }
   height: $box-height;
   transition: all 0.15s ease-in-out;
   &:before {
@@ -12,7 +15,11 @@
     left: 0;
     right: 0;
     pointer-events: none;
-    box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12),
+    box-shadow: 0 -1px 0 $bg-light, 0 0 2px rgba(0, 0, 0, 0.12),
       0 2px 4px rgba(0, 0, 0, 0.24);
+      @if $dark {
+        box-shadow: 0 -1px 0 $grey, 0 0 2px rgba(0, 0, 0, 0.12),
+          0 2px 4px rgba(0, 0, 0, 0.24);
+      }
   }
 }

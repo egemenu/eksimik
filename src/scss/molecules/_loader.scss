@@ -5,7 +5,7 @@
   > span {
     width: 10px;
     height: 10px;
-    background-color: $second-color;
+    background-color: $green-light;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -42,5 +42,15 @@
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+body {
+  &.dark {
+    .loader {
+      & > span {
+        background-color: $green-dark; 
+      }
+    }
   }
 }

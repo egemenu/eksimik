@@ -1,15 +1,21 @@
-@mixin main-footer(){
+@mixin main-footer($dark: false){
   display: flex;
   justify-content: space-between;
   padding: 5px 5px 0 5px;
   margin: 0;
   > a {
     outline: none;
-    color: $second-color;
+    color: $green;
     text-decoration: none;
+    @if $dark {
+      color: $green-dark;
+    }
     &:hover {
-      color: $second-color;
+      color: $green;
       text-decoration: underline;
+      @if $dark {
+        color: $green-dark;
+      }
     }
   }
 }

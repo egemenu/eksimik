@@ -1,14 +1,18 @@
-@mixin box-content() {
+@mixin box-content($dark: false) {
   width: calc(100% - 40px);
   padding: 10px 20px;
-  @include text-box-content();
+  @include text-box-content($dark);
   margin: 0;
   display: none;
   a {
-    @include text-box-content-link();
+    @include text-box-content-link($dark);
+    
+    &.url {
+
+    }
   }
   footer {
-    @include box-footer();
+    @include box-footer($dark);
   }
 }
 

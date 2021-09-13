@@ -3,11 +3,11 @@
     width: 7px;
   }
   &::-webkit-scrollbar-track {
-    background: $background-color;
+    background: $bg-light;
     border-radius: 5px;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background: $scrollbar-color;
+    background: $grey;
   }
 }

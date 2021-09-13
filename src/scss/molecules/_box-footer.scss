@@ -1,4 +1,4 @@
-@mixin box-footer() {
+@mixin box-footer($dark: false) {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;

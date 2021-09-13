@@ -1,4 +1,4 @@
-@mixin box-close() {
+@mixin box-close($dark: false) {
   position: absolute;
   height: 50px;
   width: 100%;

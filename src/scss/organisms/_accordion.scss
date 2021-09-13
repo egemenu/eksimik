@@ -1,8 +1,8 @@
-@mixin accordion(){
+@mixin accordion($dark: false) {
   margin: auto;
   width: 450px;
   > header {
-   @include accordion-header();
+    @include accordion-header($dark);
   }
   > input {
     display: none;
@@ -10,8 +10,10 @@
       + section {
         height: auto;
         margin: 16px 0;
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.16),
-          0 6px 12px rgba(0, 0, 0, 0.32);
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+        @if $dark {
+          box-shadow: 0 0 6px $bg-dark, 0 6px 12px rgba(0, 0, 0, 0.32);
+        }
         > label {
           &:first-of-type {
             border-bottom: 1px solid rgba(0, 0, 0, 0.18);
@@ -30,25 +32,25 @@
     }
   }
   > section {
-    @include box();
+    @include box($dark);
     > label {
       &:first-of-type {
-        @include box-holder();
+        @include box-holder($dark);
         padding-left: 25px;
         width: calc(100% - $box-height);
         &:before {
-          @include box-holder-icon();
+          @include box-holder-icon($dark);
         }
       }
       &:last-of-type {
-        @include box-close();
+        @include box-close($dark);
       }
     }
     > article {
-      @include box-content();
+      @include box-content($dark);
     }
   }
   .connection-error {
-    @include text-connection-error();
+    @include text-connection-error($dark);
   }
 }

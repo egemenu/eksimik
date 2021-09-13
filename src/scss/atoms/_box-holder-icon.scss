@@ -1,4 +1,4 @@
-@mixin box-holder-icon(){
+@mixin box-holder-icon($dark: false) {
   position: absolute;
   display: block;
   content: '\203a';
@@ -6,5 +6,8 @@
   left: 15px;
   top: -2px;
   transition: transform 0.15s ease-in-out;
-  color: rgba(0, 0, 0, 0.54);
+  color: $black;
+  @if $dark {
+    color: $smoke;
+  }
 }

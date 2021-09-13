@@ -13,12 +13,18 @@ export default function(url) {
 			helpers.mainHolder.innerHTML += `<div class="connection-error">Bağlantı Hatası!</div>`;
 		})
 		.then((html) => {
-			const rawHtml = document.createElement('div');
+			// console.log(html);
+			const rawHtml = document.createElement('html');
 			rawHtml.innerHTML = `${ html }`;
 
 			// Create header if there isn't
 			if (!helpers.mainHolder.querySelector('header') && html) {
 				helpers.createHeader(rawHtml.querySelector('.mobile-notification-icons'));
+			}
+
+			// Set dark theme if default is dark
+			if (rawHtml.querySelector('body').classList.contains('dark-theme')) {
+				document.querySelector('body').classList.add('dark');
 			}
 
 			// Extract entries raw html

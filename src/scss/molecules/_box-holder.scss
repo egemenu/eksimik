@@ -1,5 +1,5 @@
 
-@mixin box-holder() {
+@mixin box-holder($dark: false) {
   width: calc(100% - 40px);
   height: $box-height;
   padding: 0 10px;
@@ -7,9 +7,15 @@
   cursor: pointer;
   user-select: none;
   @include text-box-header();
+  @if $dark {
+    @include text-box-header(true);
+  }
   > small {
     position: absolute;
     right: 15px;
     @include text-counter();
+    @if $dark {
+      @include text-counter(true);
+    }
   }
 }

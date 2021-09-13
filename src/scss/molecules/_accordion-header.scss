@@ -1,14 +1,18 @@
-@mixin accordion-header(){
-  @include box();
+@mixin accordion-header($dark: false){
+  @include box($dark);
   height: $header-box-height;
   line-height: $header-box-height;
-  background: $background-color;
   z-index: 100;
-  box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px -2px rgba(0, 0, 0, 0.12),
+  box-shadow: 0 -1px 0 $bg-light, 0 0 2px -2px rgba(0, 0, 0, 0.12),
     0 2px 4px -4px rgba(0, 0, 0, 0.24);
+    
+    @if $dark {
+      box-shadow: 0 -1px 0 $bg-dark, 0 0 2px -2px rgba(0, 0, 0, 0.12),
+        0 2px 4px -4px rgba(0, 0, 0, 0.24);
+    }
   > label {
     margin: 0;
-    @include box-holder();
+    @include box-holder($dark);
     padding-left: 25px;
 
     > ul {
@@ -22,15 +26,15 @@
       li {
         display: inline-block;
         margin-right: 10px;
-        @include text-header-link();
+        @include text-header-link($dark);
 
         a {
-          @include text-header-link();
+          @include text-header-link($dark);
         }
         
         &.active {
           a {
-            @include text-header-link-active();
+            @include text-header-link-active($dark);
           }
         }
       }

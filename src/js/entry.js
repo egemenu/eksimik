@@ -60,7 +60,7 @@ class Entry {
 		inputElement.name = 'accordion';
 		// Don't need it anymore
 		// inputElement.setAttribute('data-url', this.url);
-		inputElement.id = `acc-${ this._id }`;
+		inputElement.id = `acc-${this._id}`;
 		inputElement.className = 'act';
 
 		return inputElement;
@@ -96,9 +96,9 @@ class Entry {
 		// Add one time listener
 		const crateEntryHandler = () => {
 			this.createEntry();
-			sectionElement.removeEventListener( 'click', crateEntryHandler, false);
+			sectionElement.removeEventListener('click', crateEntryHandler, false);
 		};
-		sectionElement.addEventListener( 'click', crateEntryHandler, false);
+		sectionElement.addEventListener('click', crateEntryHandler, false);
 
 		return sectionElement;
 	}
@@ -110,14 +110,14 @@ class Entry {
 		fetch(this.url)
 			.then((res) => res.text())
 			.then((html) => {
-				const entry = helpers.firstEntryParser(`${ html }`);
+				const entry = helpers.firstEntryParser(`${html}`);
 				helpers.removeLoader(`#article-${this._id}`);
 				article.innerHTML += entry.content;
 				article.innerHTML += `<footer>
-																<a href="${ helpers.urls.main + entry.url }" target="_blank">başlığa git</a>
+																<a href="${helpers.urls.main + entry.url}" target="_blank">başlığa git</a>
 																<span>
-																	<a href="${ helpers.urls.main + entry.url }" target="_blank">${ entry.date }</a>
-																	<a href="${ helpers.urls.main + entry.author_url }" target="_blank">${ entry.author }</a>
+																	<a href="${helpers.urls.main + entry.url}" target="_blank">${entry.date}</a>
+																	<a href="${helpers.urls.main + entry.author_url}" target="_blank">${entry.author}</a>
 																</span>
 															</footer>`;
 			});
