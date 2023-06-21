@@ -3,11 +3,11 @@ export const mainHolder = document.getElementById('main');
 
 /* Url list */
 export const urls = {
-	main: 'https://eksisozluk.com',
-	popular: 'https://eksisozluk.com/basliklar/m/populer',
-	debe: 'https://eksisozluk.com/m/debe',
-	bugunsel: (date) => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
-	yarinsal: (date) => `https://eksisozluk.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
+	main: 'https://eksisozluk1923.com',
+	popular: 'https://eksisozluk1923.com/basliklar/m/populer',
+	debe: 'https://eksisozluk1923.com/m/debe',
+	bugunsel: (date) => `https://eksisozluk1923.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
+	yarinsal: (date) => `https://eksisozluk1923.com/basliklar/ara?SearchForm.Keywords=${date}&SearchForm.Author=&SearchForm.When.From=&SearchForm.When.To=&SearchForm.NiceOnly=false&SearchForm.FavoritedOnly=false&SearchForm.SortOrder=Count`,
 };
 
 /* Queries */
@@ -34,7 +34,7 @@ export const dummyHeader = `<label for="acc-close">
 																<li id="debe">debe</li>
 															</ul>
 															<ul class="login">
-																<li><a href="https://eksisozluk.com/giris" target="_blank">giriş</a></li>
+																<li><a href="https://eksisozluk1923.com/giris" target="_blank">giriş</a></li>
 															</ul>
 														</label>`;
 
